@@ -1,0 +1,3 @@
+/*! tmihold | (c) LiviaMedeiros */
+'use strict';let e=null;const h=()=>{if(e){var a=document.getElementById("tmihold");clearTimeout(e);a.remove();e=null;a=!0}else a=!0;return a},k=(a,c,...d)=>{clearTimeout(e);a.remove();e=null;return c(...d)},l=(a,c,...d)=>e??(e=setTimeout(k,1500,((b,{x,y})=>{b.id="tmihold";Object.assign(b.style,{left:x+"px",top:y+"px"});return document.body.appendChild(b)})(document.createElement("div"),a),c,...d)),m=(a,c,...d)=>a?(b=>(b.forEach(f=>a.addEventListener(...f)),()=>b.forEach(f=>a.removeEventListener(...f))))([["pointerdown",b=>l(b,c,...d)],["pointerup",h],["pointerleave",h]]):null;
+export default (a=document,c=null,...d)=>c?m(a,c,...d):new Promise((b,f)=>{const g=m(a,()=>g?(g(),b(a)):f())});

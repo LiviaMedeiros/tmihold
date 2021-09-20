@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="/tmihold/src/tmihold.css" />
+<style>
+.tst{display:inline-block;width:200px;height:200px;background:green;margin:20px}
+</style>
+<script type="module" src="/tmihold/src/tmihold.mjs"></script>
+<script type="module">
+import $ from '/tmihold/src/tmihold.mjs';
+
+$().then(async d => {
+	const remover = $(
+		d.getElementById('testA'),
+		(...args) => console.info(args),
+		'arg1',
+		'arg2'
+	);
+
+	console.info(await $(d.getElementById('testB')));
+
+	$(d.getElementById('testB')).then(remover);
+});
+</script>
+</head>
+<body>
+<div class="tst" id="testA"></div>
+<div class="tst" id="testB"></div>
+</body>
+</html>
